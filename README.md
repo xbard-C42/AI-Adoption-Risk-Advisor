@@ -11,7 +11,6 @@ This is an official plugin for C42 OS. It provides an interactive dashboard to m
 The plugin leverages a generative AI model to provide qualitative risk analysis, acting as an expert advisor to help decision-makers understand the potential impacts of their strategies.
 
 ![Screenshot of the AI Risk Advisor](./screenshot.png)
-*(Note: Replace with an actual screenshot of the application.)*
 
 ---
 
