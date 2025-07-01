@@ -1,4 +1,3 @@
-```markdown
 # Contributing to C42 OS
 
 **Thank you for your interest in C42 OS!** 🧠✨
@@ -107,22 +106,6 @@ We're building the first operating system designed for collaborative consciousne
 
 ---
 
-## 🎓 Learning Resources
-
-### **Understanding C42 OS Principles**
-- 📖 [Four Pillars Documentation](./docs/principles.md)
-- 🛡️ [Privacy by Design Guide](./docs/privacy-by-design.md)
-- 🧠 [Neurodivergent Computing](./docs/neurodivergent-features.md)
-- 🤝 [Consciousness Collaboration](./docs/consciousness-collaboration.md)
-
-### **Technical Resources**
-- 🔧 [Architecture Overview](./docs/architecture.md)
-- 🔍 [Privacy Verification](./docs/privacy-verification.md)
-- 🎨 [UI Design Guidelines](./docs/ui-guidelines.md)
-- 📱 [Component Library](./docs/components.md)
-
----
-
 ## 🌍 Future Open Source Transition
 
 **Our commitment to the community:**
@@ -190,6 +173,3 @@ We're building the first operating system designed for collaborative consciousne
 **Thank you for helping build computing that serves consciousness!** 🧠✨
 
 *Together, we're creating technology that makes us more human, not less.*
-```
-
----

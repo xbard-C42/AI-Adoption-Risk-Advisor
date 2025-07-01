@@ -62,7 +62,24 @@ body {
   height: 100vh;
   position: sticky;
   top: 0;
-  transition: background-color 0.3s ease, border-color 0.3s ease;
+  transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+  z-index: 1000;
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.sidebar-header h1 {
+    margin: 0;
+    padding: 0;
+    border: none;
+    font-size: 1.75rem;
 }
 
 .main-content {
@@ -81,9 +98,6 @@ h1, h2, h3 {
 
 h1 {
     font-size: 1.75rem;
-    margin-bottom: 1rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid var(--border-color);
 }
 
 h2 {
@@ -267,4 +281,79 @@ h3 {
 
 .text-accent {
     color: var(--brand-accent);
+}
+
+.mobile-header, .close-button, .sidebar-overlay {
+    display: none;
+}
+
+
+/* Responsive Design for Mobile */
+@media (max-width: 768px) {
+    .app-container {
+        flex-direction: column;
+    }
+
+    .mobile-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 24px;
+        background-color: var(--card-background);
+        border-bottom: 1px solid var(--border-color);
+        position: sticky;
+        top: 0;
+        z-index: 1100;
+    }
+
+    .mobile-header h1 {
+        font-size: 1.2rem;
+        margin: 0;
+    }
+
+    .menu-button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 8px;
+        color: var(--text-primary);
+    }
+
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        transform: translateX(-100%);
+        border-right: 1px solid var(--border-color);
+    }
+    
+    .sidebar.open {
+        transform: translateX(0);
+        box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    }
+
+    .sidebar-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+        display: block;
+    }
+
+    .close-button {
+        display: block;
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: var(--text-primary);
+        padding: 8px;
+    }
+    
+    .main-content {
+        padding-top: 12px;
+    }
 }

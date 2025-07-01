@@ -51,6 +51,16 @@ const Card = ({ children, className = '' }) => (
     </div>
 );
 
+const MobileHeader = ({ onMenuClick }) => (
+    <header className="mobile-header">
+        <h1>AI Risk Advisor</h1>
+        <button onClick={onMenuClick} className="menu-button" aria-label="Open controls">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+    </header>
+);
+
+
 const years = Array.from({ length: 21 }, (_, i) => 2020 + i);
 const logistic = (t: number, t0: number, k: number) => 1 / (1 + Math.exp(-k * (t - t0)));
 
@@ -99,6 +109,7 @@ export default function AiAdoptionRiskApp() {
     const [aiAnalysis, setAiAnalysis] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
+    const [isSidebarOpen, setSidebarOpen] = useState(false);
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -217,7 +228,7 @@ export default function AiAdoptionRiskApp() {
                     peaks[name] = { year: 0, value: 0 };
                     return;
                 }
-                const peak = data.reduce<{ year: number; value: number }>(
+                const peak = data.slice(1).reduce(
                     (max, row) => (row[name] > max.value ? { year: row.year, value: row[name] } : max),
                     { year: data[0].year, value: data[0][name] }
                 );
@@ -361,8 +372,16 @@ Please provide your analysis in markdown format with the following sections:
 
     return (
         <div className="app-container">
-            <aside className="sidebar">
-                <h1>AI Risk Controls</h1>
+            <MobileHeader onMenuClick={() => setSidebarOpen(true)} />
+            {isSidebarOpen && <div className="sidebar-overlay" onClick={() => setSidebarOpen(false)}></div>}
+            <aside className={`sidebar ${isSidebarOpen ? 'open' : ''}`}>
+                <div className="sidebar-header">
+                  <h1>AI Risk Controls</h1>
+                   <button onClick={() => setSidebarOpen(false)} className="close-button" aria-label="Close controls">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                    </button>
+                </div>
+
 
                 <div className="cohort-controls">
                     <h2>Generational Cohorts</h2>
